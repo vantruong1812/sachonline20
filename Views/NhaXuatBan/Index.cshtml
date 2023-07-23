@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Lab001_2024802010326_doanvantruong.Models.NHAXUATBAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Danh sách nhà xuất bản</h2>
+
+<p>
+    <a href="@Url.Action("ThemNXB","NhaXuatBan")">Thêm mới</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenNXB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenNXB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienThoai)
+        </td>
+        <td>
+            <a href="@Url.Action("Details", "NhaXuatBan", new { maNXB =item.MaNXB })">Xem Chi Tiết</a> |
+            <a href="@Url.Action("Edit", "NhaXuatBan", new { maNXB =item.MaNXB })">Sửa</a> |
+            <a href="@Url.Action("Delete", "NhaXuatBan", new { maNXB =item.MaNXB })">Xóa</a> |
+        </td>
+    </tr>
+}
+
+</table>

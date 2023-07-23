@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "ChiTietSach";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+    <style type="text/css" >
+    .imgbook {
+        transition: all 1s ease-in;
+        width: 400px;
+    }
+
+    .imgbook:hover {
+        transform: scale(0.9);
+        cursor: pointer;
+    }
+
+    .imgsachbannhieu {
+        width: 100px;
+    }
+
+    .anhsach {
+        margin-top: 10px;
+        width: 200px;
+        border-style: solid;
+        color: grey;
+        border-radius: 5px;
+        border-spacing: 15px;
+        border-width: 5px;
+    }
+
+    .giaban {
+        text-align: right;
+        font-weight: bold;
+        margin-right: 30px;
+    }
+
+    .ngaycapnhat {
+        text-align: right;
+        font-weight: bold;
+        margin-right: 43px;
+    }
+
+    .addtocard {
+        text-align: right;
+        margin-right: 75px;
+    }
+
+    .gia {
+        font-size: large;
+        color: blue;
+        margin-right: 30px;
+    }
+
+    .border {
+        border-style: dashed;
+        border-radius: 5px;
+        border-spacing: 15px;
+        border-width: 5px;
+        border-image: repeating-linear-gradient(45deg, turquoise, pink 4%) 1;
+        background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    }
+
+    .tensach {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+    }
+
+    .motasach {
+        margin-left: 5px;
+        margin-top: 30px;
+        line-height: 20px;
+        font-family: 'Times New Roman';
+    }
+</style>
+
+
+
+<div class="thumbnail">
+    <h4 class="tensach">
+        @Model.TenSach
+    </h4>
+    <img class="anhsach" src="~/Images/@Model.AnhBia" alt="@Model.TenSach">
+    <div class="motasach">
+        <p>
+            @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </p>
+    </div>
+    <p class="ngaycapnhat">Ngày Cập Nhật: @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")</p>
+    <p class="giaban">Gía Bán: <span class="gia">@Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VND</span></p>
+    <p class="addtocard">
+        <a href="@Url.Action("ThemGioHang","GioHang", new { ms = Model.MaSach, url = Request.Url.ToString() })"
+           class="btn btn-primary" role="button">
+            <span class="glyphicon glyphicon-shopping-cart"
+                  aria-hidden="true"></span>Add to Cart
+        </a>
+    </p>
+</div>
+

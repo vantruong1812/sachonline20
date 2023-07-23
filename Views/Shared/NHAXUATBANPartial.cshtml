@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Lab001_2024802010326_doanvantruong.Models.NHAXUATBAN>
+<ul class="list-group">
+    <li class="list-group-item active" style="font-weight:bold; text-align:center">Sách Theo Nhà Xuất Bản</li>
+    @foreach (var item in Model)
+    {
+
+        <a href="@Url.Action("Sachtheonhaxuatban","SachOnline", new { iMaNXB = item.MaNXB})" class="list-group-item">
+            @item.TenNXB
+    </a>
+
+}
+
+</ul>

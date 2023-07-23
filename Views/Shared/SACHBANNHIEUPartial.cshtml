@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Lab001_2024802010326_doanvantruong.Models.SACH>
+
+<style type="text/css">
+    .imgsachbannhieu {
+        transition: all 0.5s ease-out;
+        width: 90px;
+    }
+
+        .imgsachbannhieu:hover {
+            transform: scale(1.5);
+            cursor: pointer;
+        }
+
+    .hinh {
+        overflow: hidden;
+    }
+
+    .mota {
+        line-height: 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 72px;
+    }
+</style>
+@helper Truncate(string s, int length)
+    {
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0,length)<text>...</text>
+    }
+    }
+<div class="container">
+    <h2 class="text-center">SÁCH BÁN NHIỀU</h2>
+    <hr>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-6 col-md-6">
+                <div class="media-object-default">
+                    <div class="media">
+                        <div class="media-left">
+                            <div class="hinh">
+                                <a href="@Url.Action("Home","HomeBook", new {id=item.MaSach})">
+                                    <img src="~/Images/@item.AnhBia" alt="@item.TenSach" class="media-object imgsachbannhieu" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <h4 style="min-width:70px">
+                                <a href="@Url.Action("Home","HomeBook", new {id=item.MaSach})">@item.TenSach</a>
+                            </h4>
+                            <p @Url.Action("Home", "HomeBook", new { id = item.MaSach }) class="text-justify mota">@item.MoTa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- row-->
+    <hr>
+</div>
